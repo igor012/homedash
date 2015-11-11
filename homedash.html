@@ -1,0 +1,129 @@
+<head>
+  <title>homedash</title>
+  <link rel="icon" href="/favicon.ico?v=3" type="image/x-icon" sizes="16x16 32x32">
+</head>
+
+<body>
+
+  {{> main}}
+</body>
+
+
+<template name="main">
+
+
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">Dashboard</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li id="play" class="active tab"><a href="#">LiveBox Play <span class="sr-only">(current)</span></a></li>
+          <li id="router" class="tab"><a href="#">MISC</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+
+  <div id="content">
+  <!-- Tab play -->
+  
+      <div class="navtab visible play">
+     
+
+
+        <div class="row">
+
+
+
+          <div class="col-md-6">
+
+              <div class="panel panel-primary">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Play</h3>
+                </div>
+
+                <div class="panel-body">
+
+                    <h3>Networking</h3>
+                    <p><code title="Mac Address">{{macPlay}}</code></p>
+                    <span class='label {{wol}}' title="WoL">Wake on LAN</span>
+
+                    <h3>Services</h3>
+                    <span class='label {{standby}}' title="TVbox">TV Box</span>
+                    
+                </div>
+
+              </div>
+
+        
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="col-md-6">
+
+            <div class="panel panel-info">
+
+              <div class="panel-heading">
+                 <h3 class="panel-title">Router</h3>
+              </div>
+
+              <div class="panel-body">
+
+                  <h3>Networking</h3>
+                  <p><code title="Mac Address">{{macRouter}}</code></p>
+                  <span class='label {{linkstate}}' title="status">
+                      Link Status
+                      <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                      <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                  </span>
+
+                  <h3>Services</h3>
+                  <span class='label {{iptv}}' title="IPTV status">
+                      IPTV service Status
+                      <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                      <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                  </span>
+              </div>
+
+            </div>
+
+          </div>  
+
+      </div>
+
+
+    <!-- Tab router -->
+        <!-- <div class="navtab router">
+
+            
+
+        </div>
+ -->
+
+        </div>
+  <!-- end id content -->   
+  </div>
+</template>
