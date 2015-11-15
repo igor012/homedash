@@ -1,6 +1,8 @@
 Session.setDefault('playerResults', {mac: '', wol: '', standby: ''});
 Session.setDefault('routerResults', {mac: '', linkstate: ''});
 Session.setDefault('servicesIptvResults', "");
+Session.setDefault('chromeCastInfoResults', {bssid:''});
+
 
 Template.main.helpers({
 
@@ -18,17 +20,23 @@ Template.main.helpers({
   },
 
   // Livebox Router
-	macRouter: function(){
+	macRouter: function () {
 	var active = Session.get('routerResults')['mac'] ;
     return active;
   },
-	linkstate: function(){
+	linkstate: function () {
     var active = Session.get('routerResults')['linkstate'] == "up" ? 'label-success' : 'label-danger';
     return active;
   },
-	iptv: function(){
+	iptv: function () {
     var active = Session.get('servicesIptvResults') == "Available" ? 'label-success' : 'label-danger';
     return active;
+  },
+
+  // ChromeCast
+  	infoChromeCast: function () {
+  	var active = Session.get('chromeCastInfoResults')["bssid"];
+  	
   }
 
 });
@@ -77,6 +85,11 @@ Template.main.events({
 		Session.set('servicesIptvResults', res);
     });
 
-    Meteor.call("auth", function(error, wifi) {
-		console.log(wifi);
+        Meteor.call("chromeCastInfo", function(error, chromeCastInfoResults) {
+		var res =  Session.get('chromeCastInfoResults');
+
+		var json = JSON.parse(chromeCastInfoResults.content);
+		res = json["bssid"];
+		Session.set('chromeCastInfoResults', res);
+		console.log(res);
     });
