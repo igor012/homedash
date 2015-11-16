@@ -1,7 +1,7 @@
 Session.setDefault('playerResults', {mac: '', wol: '', standby: ''});
 Session.setDefault('routerResults', {mac: '', linkstate: ''});
 Session.setDefault('servicesIptvResults', "");
-Session.setDefault('chromeCastInfoResults', {bssid:''});
+//Session.setDefault('chromeCastInfoResults', {bssid:''});
 
 
 Template.main.helpers({
@@ -37,8 +37,10 @@ Template.main.helpers({
   	infoChromeCast: function () {
   	var active = Session.get('chromeCastInfoResults')["bssid"];
   	
+  },
+  	chromeCastState: function () {
+  	var active = Session.get('chromeCastON') == "true" ? 'label-success' : 'label-danger';
   }
-
 });
 
 Template.main.events({
@@ -85,11 +87,17 @@ Template.main.events({
 		Session.set('servicesIptvResults', res);
     });
 
-        Meteor.call("chromeCastInfo", function(error, chromeCastInfoResults) {
-		var res =  Session.get('chromeCastInfoResults');
 
-		var json = JSON.parse(chromeCastInfoResults.content);
-		res = json["bssid"];
-		Session.set('chromeCastInfoResults', res);
-		console.log(res);
+    Meteor.call("chromeCastInfo", function(error, chromeCastInfoResults) {
+    	if (chromeCastInfoResults == 0) {
+   			Session.set('chromeCastON', false);
+    	}
+    	else {
+    		Session.set('chromeCastON', true);
+    		var res =  Session.get('chromeCastInfoResults');
+
+    		var json = JSON.parse(chromeCastInfoResults.content);
+    		res = json["bssid"];
+    		Session.set('chromeCastInfoResults', res);
+    	}
     });

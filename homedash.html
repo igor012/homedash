@@ -90,16 +90,6 @@
           </div>
 
 
-
-
-
-
-
-
-
-
-
-
         <div class="col-md-6">
 
             <div class="panel panel-info">
@@ -124,6 +114,11 @@
                       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
                       <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
                   </span>
+                  <h3>ChromeCast</h3>
+                    <span class='label {{chromeCastState}}' title="CC status">CC S
+                      <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                      <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+                    </span>
               </div>
 
             </div>
@@ -133,13 +128,16 @@
       </div>
 
 
-    <!-- Tab router -->
+    <!-- Tab ChromeCast -->
           <div class="navtab chromecast">
             <h3>ChromeCast</h3>
-              <p><code title="BSSID">{{infoChromeCast}}</code></p>
+              <span class='label {{chromeCastState}}' title="CC status">CC S
+                  <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+                  <span class="glyphicon glyphicon-ok-sign" aria-hidden="true"></span>
+              </span>
           </div>
- 
-        </div>
+    <!-- End tab ChromeCast -->
+      </div>
   <!-- end id content -->   
   </div>
 </template>

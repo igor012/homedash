@@ -14,9 +14,9 @@ span.label {
 	display: none;
 }
 
-.play {
+/*.play {
 	display: block;
-}
+}*/
 
 .label-success > .glyphicon.glyphicon-remove-sign{
 	display: none;
